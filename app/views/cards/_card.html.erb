@@ -1,7 +1,7 @@
 <div class="col s4">
     <div class="card">
         <div class="card-image">
-            <img src="http://lorempixel.com/640/480/abstract/<%= rand(1..10) %>">
+            <img src="http://lorempixel.com/640/480/abstract/9">
             <span class="card-title"><%= course.title %></span>
         </div>
         <div class="card-content">
@@ -22,14 +22,9 @@
         <div class="card-action">
             <div class="row">
                 <div class="col s4">
-                    <%= link_to 'Show', course %>
+                    <%= link_to 'View details', course %>
                 </div>
-                <div class="col s4">
-                    <%= link_to 'Edit', edit_course_path(course) %>
-                </div>
-                <div class="col s4">
-                    <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </div>
+
             </div>
         </div>
     </div>

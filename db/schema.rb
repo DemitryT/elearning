@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20170613025105) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "course_enrollements", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "course_id"
+    t.bigint "user_id"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_enrollements_on_course_id"
@@ -29,12 +32,10 @@ ActiveRecord::Schema.define(version: 20170613025105) do
     t.integer "level"
     t.string "image_url"
     t.string "slug"
-    t.integer "university_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["slug"], name: "index_courses_on_slug", unique: true
-    t.index ["university_id"], name: "index_courses_on_university_id"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170613025105) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.boolean "admin"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
@@ -77,12 +79,15 @@ ActiveRecord::Schema.define(version: 20170613025105) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
     t.boolean "teacher_role"
     t.boolean "student_role"
-    t.integer "university_id"
+    t.bigint "university_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["university_id"], name: "index_users_on_university_id"
   end
 
+  add_foreign_key "course_enrollements", "courses"
+  add_foreign_key "course_enrollements", "users"
+  add_foreign_key "courses", "users"
+  add_foreign_key "users", "universities"
 end

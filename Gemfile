@@ -12,11 +12,11 @@ gem 'cancancan', '~> 1.10'
 gem 'toastr-rails'
 # Devise
 gem 'devise', '~> 4.2'
-# Cute URLS 
+# Cute URLS
 gem 'friendly_id', '~> 5.1.0'
 # jQuery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-# Materialize 
+# Materialize
 gem 'materialize-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
