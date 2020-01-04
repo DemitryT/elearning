@@ -3,13 +3,13 @@ class CoursesController < ApplicationController
   load_and_authorize_resource
 
   # GET /courses
-  def all 
+  def all
     @courses = Course.all
     if params[:search]
       @courses = Course.search(params[:search]).order("Created_at DESC") # using search named scope
     end
   end
-  
+
   def index
     @courses = current_user.courses
   end
@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
 
    # GET /courses/1/edit
   def edit
-   
+
   end
 
   # GET /courses/new
@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
- 
+
 
   # POST /courses
   def create
@@ -48,7 +48,7 @@ class CoursesController < ApplicationController
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
       else
-        format.html { render :edit }        
+        format.html { render :edit }
       end
     end
   end
@@ -62,13 +62,13 @@ class CoursesController < ApplicationController
   end
 
   private
-    
+
     def set_course
       @course = Course.friendly.find(params[:id])
     end
-    
+
     # Never trust parameters from the scary internetz
     def course_params
-      params.require(:course).permit(:title, :description, :length, :subjectstring, :level, :image_url, :slug, :university_id)
+      params.require(:course).permit(:title, :description, :length, :subjectstring, :level, :image_url, :slug)
     end
 end

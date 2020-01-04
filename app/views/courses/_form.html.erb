@@ -33,7 +33,7 @@
             </div>
 
             <div class="input-field">
-              <%= form.label :subjectstring %>
+              <%= form.label 'Subject' %>
                 <%= form.text_field :subjectstring, id: :course_subjectstring, placeholder: " " %>
             </div>
 
@@ -50,10 +50,7 @@
                 <%= form.text_field :image_url, id: :course_image_url, placeholder: " " %>
             </div>
 
-            <div class="input-field">
-              
-              <%= form.select :university_id, options_for_select([[current_user.university.name, current_user.university_id]], course.university_id) %>
-            </div>
+
             <div class="actions center-align">
               <%= form.submit(class: 'waves-effect waves-light btn indigo ') %>
             </div>
