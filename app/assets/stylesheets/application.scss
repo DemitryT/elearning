@@ -13,3 +13,7 @@ $secondary-color: color("yellow", "base") !default;
 .custom-white {
   color: white;
 }
+
+nav, .page-footer  {
+  background-color: #2F2E2E !important;
+}
